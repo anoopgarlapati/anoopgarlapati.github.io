@@ -89,7 +89,7 @@ a:hover { color: #000; text-decoration: underline; }
 /* ===================================================================
    Post / article content
    =================================================================== */
-.post-content { margin: 0; }
+.post-content { margin: 0; text-align: justify; }
 
 .post-content h1,
 .post-content h2,
@@ -332,17 +332,18 @@ pre { line-height: 125%; }
 .post-list li {
   margin-bottom: 24px;
 }
+.post-list .post-date {
+  display: block;
+  font-size: 13px;
+  color: #828282;
+  margin-bottom: 2px;
+}
 .post-list .post-link {
   display: block;
   font-size: 20px;
-  color: #333;
-  margin-bottom: 2px;
+  color: #2a7ae2;
 }
-.post-list .post-link:hover { color: #000; text-decoration: none; }
-.post-list .post-date {
-  font-size: 13px;
-  color: #828282;
-}
+.post-list .post-link:hover { color: #1a5ab8; text-decoration: none; }
 .post-list .post-excerpt {
   font-size: 14px;
   color: #555;
