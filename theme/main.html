@@ -32,7 +32,7 @@
         <header class="post-header">
           <h1 class="post-title">{{ page.title }}</h1>
           {% if page.meta and page.meta.date %}
-          <p class="post-meta">{{ page.meta.date }}</p>
+          <p class="post-meta">{{ page.meta.date.strftime("%b %-d, %Y") if page.meta.date is not string else page.meta.date }}</p>
           {% endif %}
         </header>
         {% endif %}
