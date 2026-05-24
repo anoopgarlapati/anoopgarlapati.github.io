@@ -1,0 +1,35 @@
+site_name: Anoop Garlapati
+site_url: https://anoopgarlapati.github.io
+site_description: Personal Blog
+site_author: Anoop Garlapati
+
+theme:
+  name: null
+  custom_dir: theme
+
+docs_dir: docs
+site_dir: site
+
+nav:
+  - Home: index.md
+  - About: about.md
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: false
+      use_pygments: true
+      pygments_lang_class: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - toc:
+      permalink: false
+  - admonition
+  - tables
+  - footnotes
+  - attr_list
+  - meta

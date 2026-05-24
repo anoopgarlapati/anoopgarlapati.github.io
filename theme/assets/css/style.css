@@ -1,0 +1,399 @@
+/* Theme inspired by Andrej Karpathy's blog (https://github.com/karpathy/karpathy.github.io), MIT License */
+
+/* ===================================================================
+   Base reset & typography  (#fdfdfd bg, #333 text)
+   =================================================================== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 300;
+  color: #333;
+  background-color: #fdfdfd;
+}
+
+a { color: #2a7ae2; text-decoration: none; }
+a:visited { color: #205caa; }
+a:hover { color: #000; text-decoration: underline; }
+
+/* ===================================================================
+   Layout wrapper
+   =================================================================== */
+.wrap {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 30px;
+}
+
+/* ===================================================================
+   Header  (5px top border, 1px bottom border)
+   =================================================================== */
+.site-header {
+  border-top: 5px solid #333;
+  border-bottom: 1px solid #e8e8e8;
+  min-height: 56px;
+  background-color: #fdfdfd;
+}
+
+.site-header .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 56px;
+}
+
+.site-title {
+  font-size: 18px;
+  font-weight: 300;
+  letter-spacing: -0.5px;
+  color: #333;
+  white-space: nowrap;
+}
+.site-title:hover { color: #333; text-decoration: none; }
+
+.site-nav { display: flex; gap: 0; }
+.site-nav .page-link {
+  color: #333;
+  margin-left: 20px;
+  font-size: 15px;
+}
+.site-nav .page-link:hover { color: #000; text-decoration: none; }
+.site-nav .page-link.active { color: #000; }
+
+/* ===================================================================
+   Page content
+   =================================================================== */
+.page-content { padding: 30px 0; }
+
+/* ===================================================================
+   Post header (title + date)
+   =================================================================== */
+.post-header { margin: 10px 0 30px; }
+
+.post-title {
+  font-size: 36px;
+  letter-spacing: -1px;
+  line-height: 1.1;
+  font-weight: 400;
+  color: #111;
+}
+
+.post-meta {
+  font-size: 14px;
+  color: #828282;
+  margin-top: 6px;
+}
+
+/* ===================================================================
+   Post / article content
+   =================================================================== */
+.post-content { margin: 0; }
+
+.post-content h1,
+.post-content h2,
+.post-content h3,
+.post-content h4,
+.post-content h5,
+.post-content h6 {
+  font-weight: 400;
+  margin: 40px 0 20px;
+  line-height: 1.2;
+  color: #111;
+}
+.post-content h1 { font-size: 32px; }
+.post-content h2 { font-size: 26px; }
+.post-content h3 { font-size: 22px; }
+.post-content h4 { font-size: 18px; }
+
+.post-content p { margin: 15px 0; }
+
+.post-content ul,
+.post-content ol { margin: 15px 0 15px 30px; }
+.post-content li { margin: 4px 0; }
+
+.post-content blockquote {
+  color: #828282;
+  border-left: 4px solid #e8e8e8;
+  padding: 2px 0 2px 20px;
+  margin: 20px 0;
+  font-size: 17px;
+  font-style: italic;
+}
+
+.post-content img {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid #999;
+  display: block;
+  margin: 20px 0;
+}
+
+.post-content hr {
+  border: none;
+  border-top: 1px solid #e8e8e8;
+  margin: 30px 0;
+}
+
+/* ===================================================================
+   Tables
+   =================================================================== */
+.post-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 15px;
+}
+.post-content th,
+.post-content td {
+  border: 1px solid #e8e8e8;
+  padding: 8px 12px;
+  text-align: left;
+}
+.post-content th { background-color: #f5f5f5; font-weight: 400; }
+
+/* ===================================================================
+   Inline code
+   =================================================================== */
+code {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 13px;
+  background-color: #eef;
+  border: 1px solid #d5d5e9;
+  border-radius: 3px;
+  padding: 1px 5px;
+}
+
+/* ===================================================================
+   Fenced code blocks  (Pygments .highlight wrapper)
+   =================================================================== */
+pre {
+  border-radius: 3px;
+  border: 1px solid #d5d5e9;
+  background-color: #eef;
+  padding: 10px 14px;
+  overflow-x: auto;
+  margin: 20px 0;
+  line-height: 1.4;
+}
+
+pre code {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 13px;
+}
+
+/* Pygments wrapper */
+.highlight {
+  border-radius: 3px;
+  border: 1px solid #d5d5e9;
+  background-color: #eef;
+  margin: 20px 0;
+  overflow-x: auto;
+}
+
+.highlight pre {
+  border: none;
+  background: none;
+  margin: 0;
+  padding: 10px 14px;
+}
+
+/* ===================================================================
+   Pygments token colours  (friendly style)
+   =================================================================== */
+pre { line-height: 125%; }
+.highlight .hll { background-color: #ffffcc }
+.highlight .c  { color: #60a0b0; font-style: italic }
+.highlight .err{ border: 1px solid #FF0000 }
+.highlight .k  { color: #007020; font-weight: bold }
+.highlight .o  { color: #666666 }
+.highlight .ch { color: #60a0b0; font-style: italic }
+.highlight .cm { color: #60a0b0; font-style: italic }
+.highlight .cp { color: #007020 }
+.highlight .cpf{ color: #60a0b0; font-style: italic }
+.highlight .c1 { color: #60a0b0; font-style: italic }
+.highlight .cs { color: #60a0b0; background-color: #fff0f0 }
+.highlight .gd { color: #A00000 }
+.highlight .ge { font-style: italic }
+.highlight .gr { color: #FF0000 }
+.highlight .gh { color: #000080; font-weight: bold }
+.highlight .gi { color: #00A000 }
+.highlight .go { color: #888888 }
+.highlight .gp { color: #c65d09; font-weight: bold }
+.highlight .gs { font-weight: bold }
+.highlight .gu { color: #800080; font-weight: bold }
+.highlight .gt { color: #0044DD }
+.highlight .kc { color: #007020; font-weight: bold }
+.highlight .kd { color: #007020; font-weight: bold }
+.highlight .kn { color: #007020; font-weight: bold }
+.highlight .kp { color: #007020 }
+.highlight .kr { color: #007020; font-weight: bold }
+.highlight .kt { color: #902000 }
+.highlight .m  { color: #40a070 }
+.highlight .s  { color: #4070a0 }
+.highlight .na { color: #4070a0 }
+.highlight .nb { color: #007020 }
+.highlight .nc { color: #0e84b5; font-weight: bold }
+.highlight .no { color: #60add5 }
+.highlight .nd { color: #555555; font-weight: bold }
+.highlight .ni { color: #d55537; font-weight: bold }
+.highlight .ne { color: #007020 }
+.highlight .nf { color: #06287e }
+.highlight .nl { color: #002070; font-weight: bold }
+.highlight .nn { color: #0e84b5; font-weight: bold }
+.highlight .nt { color: #062873; font-weight: bold }
+.highlight .nv { color: #bb60d5 }
+.highlight .ow { color: #007020; font-weight: bold }
+.highlight .w  { color: #bbbbbb }
+.highlight .mb { color: #40a070 }
+.highlight .mf { color: #40a070 }
+.highlight .mh { color: #40a070 }
+.highlight .mi { color: #40a070 }
+.highlight .mo { color: #40a070 }
+.highlight .s2 { color: #4070a0 }
+.highlight .se { color: #4070a0; font-weight: bold }
+.highlight .sh { color: #4070a0 }
+.highlight .si { color: #70a0d0; font-style: italic }
+.highlight .sx { color: #c65d09 }
+.highlight .sr { color: #235388 }
+.highlight .s1 { color: #4070a0 }
+.highlight .ss { color: #517918 }
+.highlight .bp { color: #007020 }
+.highlight .fm { color: #06287e }
+.highlight .nv,.highlight .vc,.highlight .vg,.highlight .vi,.highlight .vm { color: #bb60d5 }
+.highlight .il { color: #40a070 }
+
+/* ===================================================================
+   Mermaid diagrams
+   =================================================================== */
+.mermaid {
+  display: flex;
+  justify-content: center;
+  margin: 30px 0;
+  overflow-x: auto;
+}
+
+/* ===================================================================
+   Post navigation (prev / next)
+   =================================================================== */
+.post-nav {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid #e8e8e8;
+  font-size: 14px;
+}
+.post-nav a { color: #333; }
+.post-nav a:hover { color: #000; text-decoration: underline; }
+
+/* ===================================================================
+   Footer
+   =================================================================== */
+.site-footer {
+  border-top: 1px solid #e8e8e8;
+  padding: 30px 0;
+  font-size: 14px;
+  color: #828282;
+}
+
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer-social {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.social-icon {
+  width: 18px;
+  height: 18px;
+  fill: #828282;
+  display: block;
+  transition: fill 0.15s;
+}
+
+.footer-social a:hover .social-icon { fill: #333; }
+
+/* ===================================================================
+   Home page post listing
+   =================================================================== */
+.post-list {
+  list-style: none;
+  margin: 10px 0 0;
+}
+.post-list li {
+  margin-bottom: 24px;
+}
+.post-list .post-link {
+  display: block;
+  font-size: 20px;
+  color: #333;
+  margin-bottom: 2px;
+}
+.post-list .post-link:hover { color: #000; text-decoration: none; }
+.post-list .post-date {
+  font-size: 13px;
+  color: #828282;
+}
+.post-list .post-excerpt {
+  font-size: 14px;
+  color: #555;
+  margin-top: 4px;
+}
+.post-list-empty {
+  color: #828282;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+/* ===================================================================
+   Admonitions
+   =================================================================== */
+.admonition {
+  border-left: 4px solid #2a7ae2;
+  background: #f4f8ff;
+  padding: 12px 16px;
+  margin: 20px 0;
+  border-radius: 0 3px 3px 0;
+}
+.admonition-title {
+  font-weight: 400;
+  margin-bottom: 6px;
+  color: #2a7ae2;
+}
+.admonition.warning { border-color: #e67e22; background: #fffaf4; }
+.admonition.warning .admonition-title { color: #e67e22; }
+.admonition.danger { border-color: #c0392b; background: #fff4f4; }
+.admonition.danger .admonition-title { color: #c0392b; }
+.admonition.tip { border-color: #27ae60; background: #f4fff8; }
+.admonition.tip .admonition-title { color: #27ae60; }
+
+/* ===================================================================
+   Responsive
+   =================================================================== */
+@media (max-width: 750px) {
+  .site-header .wrap {
+    height: auto;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 12px 30px;
+    gap: 8px;
+  }
+  .site-nav { flex-wrap: wrap; gap: 4px; }
+  .site-nav .page-link { margin-left: 0; margin-right: 16px; }
+  .post-title { font-size: 28px; }
+}
+
+@media (max-width: 600px) {
+  .post-content h2 { font-size: 22px; }
+  .post-content h3 { font-size: 19px; }
+  .post-content h4 { font-size: 16px; }
+}

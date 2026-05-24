@@ -1,0 +1,9 @@
+[project]
+name = "anoopgarlapati-github-io"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = [
+  "mkdocs>=1.6",
+  "pymdown-extensions>=10.0",
+  "pygments>=2.17",
+]
