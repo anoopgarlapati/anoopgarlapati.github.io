@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+         <loc>https://anoopgarlapati.github.io/</loc>
+         <lastmod>2026-05-24</lastmod>
+    </url>
+    <url>
+         <loc>https://anoopgarlapati.github.io/about/</loc>
+         <lastmod>2026-05-24</lastmod>
+    </url>
+    <url>
+         <loc>https://anoopgarlapati.github.io/posts/2021-01-04-g1-garbage-collector-tuning/</loc>
+         <lastmod>2026-05-24</lastmod>
+    </url>
+    <url>
+         <loc>https://anoopgarlapati.github.io/posts/2021-08-18-spring-aop-writing-good-pointcuts/</loc>
+         <lastmod>2026-05-24</lastmod>
+    </url>
+    <url>
+         <loc>https://anoopgarlapati.github.io/posts/2026-02-16-cursor-vscode-java-setup/</loc>
+         <lastmod>2026-05-24</lastmod>
+    </url>
+</urlset>

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Setting up Cursor and VS Code for Java projects &ndash; Anoop Garlapati</title>
+  <meta name="description" content="Personal Blog">
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="site-title" href="../../">Anoop Garlapati</a>
+      <nav class="site-nav">
+        
+          
+        
+          
+            <a class="page-link" href="../../about/">About</a>
+          
+        
+      </nav>
+    </div>
+  </header>
+
+  <div class="page-content">
+    <div class="wrap">
+      
+        
+        <header class="post-header">
+          <h1 class="post-title">Setting up Cursor and VS Code for Java projects</h1>
+          
+          <p class="post-meta">Feb 16, 2026</p>
+          
+        </header>
+        
+        <div class="post-content">
+          <p>This covers configuring Cursor and VS Code for Java development — recommended settings, running and debugging tests, and viewing test results and coverage.</p>
+<p>While this guide is aimed at Cursor, the same steps work for VS Code. If you don't have Cursor, VS Code with GitHub Copilot gives a similar AI-assisted experience.</p>
+<h1 id="prerequisites">Prerequisites</h1>
+<ul>
+<li>JDK</li>
+<li>Maven</li>
+<li><a href="https://cursor.com/">Cursor</a> or <a href="https://code.visualstudio.com/">VS Code</a></li>
+</ul>
+<h1 id="install-extension-pack-for-java">Install Extension Pack for Java</h1>
+<ol>
+<li>Open the Extensions view from the Primary Side Bar, or use <code>Cmd+Shift+P</code> (macOS) / <code>Ctrl+Shift+P</code> (Windows/Linux) and search for <strong>View: Show Extensions</strong>.</li>
+<li>Search for <strong>Extension Pack for Java</strong> from publisher <code>vscjava</code> / <code>microsoft.com</code>.</li>
+<li>Install it. This pulls in:</li>
+<li><strong>Language Support for Java</strong> by Red Hat — workspace compilation, IntelliSense, navigation, refactoring (uses Eclipse JDT)</li>
+<li><strong>Debugger for Java</strong> — run and debug</li>
+<li><strong>Test Runner for Java</strong> — view and run JUnit and TestNG tests</li>
+<li><strong>Maven for Java</strong> — Maven project support</li>
+<li><strong>Gradle for Java</strong> — Gradle project support</li>
+<li><strong>Project Manager for Java</strong> — project view</li>
+</ol>
+<h1 id="recommended-user-settings">Recommended User Settings</h1>
+<p>Add these to <strong>User Settings</strong>, not workspace settings, so they apply to every Java project you open.</p>
+<p>Open Command Palette (<code>Cmd+Shift+P</code>) and search for <strong>Open User Settings (JSON)</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Recommended Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>java.referencesCodeLens.enabled</code></td>
+<td><code>true</code></td>
+<td>Show "N references" above classes and methods.</td>
+</tr>
+<tr>
+<td><code>java.implementationCodeLens</code></td>
+<td><code>all</code></td>
+<td>Show "Implementations" above interfaces and abstract methods.</td>
+</tr>
+<tr>
+<td><code>java.compile.nullAnalysis.mode</code></td>
+<td><code>disabled</code></td>
+<td>Disable null analysis to avoid cluttering the editor with warnings in large existing codebases.</td>
+</tr>
+<tr>
+<td><code>java.format.settings.url</code></td>
+<td><code>/path/to/your/eclipse-formatter.xml</code></td>
+<td>Path to an Eclipse Formatter XML file for consistent code style.</td>
+</tr>
+<tr>
+<td><code>java.jdt.ls.vmargs</code></td>
+<td><code>-XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx16G -Xms2G -Xlog:disable</code></td>
+<td>JVM args for the Java language server. Increasing <code>-Xmx</code> is recommended for large projects to keep the language server responsive.</td>
+</tr>
+<tr>
+<td><code>testing.coverageToolbarEnabled</code></td>
+<td><code>true</code></td>
+<td>Shows the Testing Coverage Toolbar in the editor for toggling inline coverage.</td>
+</tr>
+<tr>
+<td><code>redhat.telemetry.enabled</code></td>
+<td><code>false</code></td>
+<td>Disables telemetry for the Red Hat Java Language Server extension.</td>
+</tr>
+</tbody>
+</table>
+<p>Example <code>settings.json</code> (<code>~/Library/Application Support/Cursor/User/settings.json</code> on macOS):</p>
+<div class="language-json highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;java.compile.nullAnalysis.mode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;disabled&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;java.referencesCodeLens.enabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;java.implementationCodeLens&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;all&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;java.jdt.ls.vmargs&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;-XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx16G -Xms2G -Xlog:disable&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;java.format.settings.url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/path/to/your/eclipse-formatter.xml&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;redhat.telemetry.enabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;testing.coverageToolbarEnabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Notes:</strong></p>
+<ol>
+<li>Ensure <code>~/.m2/settings.xml</code> has any required Maven repository mirrors configured so the IDE can resolve dependencies.</li>
+<li>The IDE resolves Java based on <code>JAVA_HOME</code>. If it does not pick up the right JDK, add a <code>java.configuration.runtimes</code> entry in User Settings:</li>
+</ol>
+<div class="language-json highlight"><pre><span></span><code><span class="nt">&quot;java.configuration.runtimes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;JavaSE-17&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/Library/Java/JavaVirtualMachines/openjdk-17.jdk/Contents/Home&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">]</span>
+</code></pre></div>
+<h2 id="known-issues">Known Issues</h2>
+<h3 id="dependencycopy-fails-on-reactor-artifacts-mdep-187"><code>dependency:copy</code> fails on reactor artifacts (MDEP-187)</h3>
+<p>When using <code>maven-dependency-plugin:copy</code> to copy an artifact from another module in the same reactor build, the goal can fail with:</p>
+<div class="language-text highlight"><pre><span></span><code>Artifact &#39;...&#39; has not been packaged yet (is a directory).
+When used on reactor artifact, copy should be executed after packaging: see MDEP-187.
+</code></pre></div>
+<p>This happens because Maven resolves the reactor dependency as a project reference rather than a packaged artifact, and <code>dependency:copy</code> treats it as unpacked. See the <a href="https://github.com/apache/maven-dependency-plugin/issues/1180">open bug on maven-dependency-plugin</a>.</p>
+<p><strong>Workaround:</strong> If this build failure blocks the debugger, set the following in User Settings to allow the debugger to proceed regardless:</p>
+<div class="language-json highlight"><pre><span></span><code><span class="nt">&quot;java.debug.settings.onBuildFailureProceed&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+</code></pre></div>
+<h1 id="testing">Testing</h1>
+<h2 id="running-tests">Running Tests</h2>
+<h3 id="from-the-test-explorer">From the Test Explorer</h3>
+<ol>
+<li>Open the <strong>Testing</strong> view: <code>Cmd+Shift+P</code> → <strong>View: Show Testing</strong>.</li>
+<li>Expand the project and navigate to the test package or class.</li>
+<li>Click <strong>Run</strong> (play icon) or <strong>Debug</strong> (bug icon) next to a test class, method, or package.</li>
+</ol>
+<p>You can also right-click a package, directory, or class in the Project Explorer and select <strong>Run Tests</strong> or <strong>Debug Tests</strong>.</p>
+<h3 id="from-the-editor">From the editor</h3>
+<ul>
+<li><strong>Run:</strong> Click the green play icon in the gutter next to a test method or class.</li>
+<li><strong>Debug:</strong> Right-click the green play icon and select <strong>Debug</strong>.</li>
+</ul>
+<h2 id="debugging-tests">Debugging Tests</h2>
+<ol>
+<li>Set breakpoints by clicking in the gutter next to the line.</li>
+<li>Start debugging using any of these:</li>
+<li>Testing view → click <strong>Debug</strong> next to the test.</li>
+<li>Editor → right-click the play icon → <strong>Debug</strong>.</li>
+<li>Run and Debug view → choose a <strong>Debug Test</strong> configuration.</li>
+</ol>
+<p>The Debugger for Java extension starts the test process with the debugger attached. Use the Debug toolbar (Continue, Step Over, Step Into, etc.) and the Variables, Watch, and Call Stack panels as usual.</p>
+<h2 id="attaching-debugger-to-a-running-process">Attaching Debugger to a running process</h2>
+<p>To attach to a Java process already running with the debug agent:</p>
+<ol>
+<li>Start the process with the JDWP agent:</li>
+</ol>
+<div class="language-shell highlight"><pre><span></span><code>java<span class="w"> </span>-agentlib:jdwp<span class="o">=</span><span class="nv">transport</span><span class="o">=</span>dt_socket,server<span class="o">=</span>y,suspend<span class="o">=</span>n,address<span class="o">=</span>*:5005<span class="w"> </span>-jar<span class="w"> </span>app.jar
+</code></pre></div>
+<ol>
+<li>In the <strong>Run and Debug</strong> view, create a <code>launch.json</code> and add an attach configuration:</li>
+</ol>
+<div class="language-json highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;configurations&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;java&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Attach to my-app&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;request&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;attach&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;hostName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;localhost&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;port&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5005</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+<ol>
+<li>Start your Java process on that port, then select the configuration in the Run and Debug view and click the green play button. The debugger attaches and you can set breakpoints and step through code normally.</li>
+</ol>
+<h2 id="viewing-test-results">Viewing Test Results</h2>
+<ul>
+<li><strong>Testing view:</strong> Shows a pass/fail tree after a run. Click a test to navigate to the code; expand failures to see messages.</li>
+<li><strong>Test Results panel:</strong> Bottom panel with pass/fail list and durations.</li>
+<li><strong>Terminal:</strong> Raw test runner output (Surefire, TestNG, etc.).</li>
+<li><strong>Problems view:</strong> Compilation errors and some test failures.</li>
+</ul>
+<h2 id="viewing-test-coverage">Viewing Test Coverage</h2>
+<p>Run tests with coverage via the right-click menu on a test → <strong>Run with Coverage</strong>.</p>
+<p>After the run, the <strong>Test Coverage</strong> panel opens in the sidebar. For inline coverage, open Command Palette → search <strong>Test Coverage Toolbar</strong> → toggle <strong>Inline Coverage</strong> to show or hide per-line coverage directly in the editor.</p>
+<p>Both panels show coverage by statements, functions, and branches.</p>
+<h1 id="quick-reference">Quick Reference</h1>
+<table>
+<thead>
+<tr>
+<th>Task</th>
+<th>How</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Run a command</td>
+<td><code>Cmd+Shift+P</code> and search by name</td>
+</tr>
+<tr>
+<td>Search a file by name</td>
+<td><code>Cmd+P</code> and search</td>
+</tr>
+<tr>
+<td>Run all tests in a class</td>
+<td>Testing view → Run next to the class, or click the play icon in the editor gutter</td>
+</tr>
+<tr>
+<td>Debug a single test</td>
+<td>Set breakpoint → right-click play icon → Debug, or use Testing view</td>
+</tr>
+<tr>
+<td>Attach debugger to JVM</td>
+<td>Add an "Attach" config in Run and Debug view with the debug port; start the process on that port</td>
+</tr>
+<tr>
+<td>Refresh Maven / fix unresolved types</td>
+<td><code>Cmd+Shift+P</code> → <strong>Java: Clean Java Language Server Workspace</strong> → Restart and delete → Reload</td>
+</tr>
+<tr>
+<td>Language server slow / OOM</td>
+<td>Increase <code>-Xmx</code> in <code>java.jdt.ls.vmargs</code> in User Settings</td>
+</tr>
+</tbody>
+</table>
+        </div>
+        
+      
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <span class="footer-name">Anoop Garlapati</span>
+      <div class="footer-social">
+        <a href="https://github.com/anoopgarlapati" target="_blank" rel="noopener" aria-label="GitHub">
+          <svg class="social-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+        </a>
+        <a href="https://linkedin.com/in/anoopgarlapati" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg class="social-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+        <a href="https://x.com/anoopgarlapati" target="_blank" rel="noopener" aria-label="X">
+          <svg class="social-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 7.184ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <script src="../../assets/js/extra.js"></script>
+  
+  <script src="search/main.js"></script>
+  
+</body>
+</html>
