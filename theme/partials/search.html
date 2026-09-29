@@ -1,0 +1,17 @@
+{% import "partials/icons.html" as icons %}
+<dialog id="search" class="search-dialog" aria-label="Search the site">
+  <div class="search-box">
+    {{ icons.search() }}
+    <input id="search-input" class="search-input" type="search" role="combobox"
+           aria-label="Search" aria-expanded="false" aria-controls="search-results" aria-autocomplete="list"
+           placeholder="Search writing, topics and projects" autocomplete="off" spellcheck="false">
+    <button class="search-esc" type="button" data-search-close aria-label="Close search"><kbd>Esc</kbd></button>
+  </div>
+  <div id="search-results" class="search-results" role="listbox" aria-label="Results"></div>
+  <p id="search-status" class="visually-hidden" aria-live="polite"></p>
+  <div class="search-foot" aria-hidden="true">
+    <span><kbd>↑</kbd><kbd>↓</kbd> navigate</span>
+    <span><kbd>↵</kbd> open</span>
+    <span><kbd>esc</kbd> close</span>
+  </div>
+</dialog>

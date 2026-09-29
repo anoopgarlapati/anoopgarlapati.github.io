@@ -1,0 +1,30 @@
+<footer class="site-footer">
+  <div class="container grid footer-grid">
+    <div class="grid-aside">
+      <p class="brand"><span class="mark" aria-hidden="true"></span>{{ config.site_name }}</p>
+      <p class="footer-note">&copy; {{ build_date_utc.year }} {{ config.site_author }}</p>
+    </div>
+    <div class="grid-main footer-cols">
+      <nav aria-labelledby="f-site"><p class="footer-label" id="f-site">Site</p>
+        <ul>
+          {%- for item in nav if not (item.is_page and item.is_homepage) %}
+          <li><a href="{{ (item.url if item.is_page else item.children[0].url) | url }}">{{ item.title }}</a></li>
+          {%- endfor %}
+        </ul>
+      </nav>
+      {% if pub and pub.topics %}
+      <nav aria-labelledby="f-topics"><p class="footer-label" id="f-topics">Topics</p>
+        <ul>{% for t in pub.topics %}<li><a href="{{ t.url | url }}">{{ t.title }}</a></li>{% endfor %}</ul>
+      </nav>
+      {% endif %}
+      <div><p class="footer-label">Elsewhere</p>
+        <ul>
+          {%- for s in config.extra.social %}
+          <li><a href="{{ s.url }}" rel="noopener" target="_blank">{{ s.name }}<span class="visually-hidden"> (opens in a new tab)</span></a></li>
+          {%- endfor %}
+          <li><a href="{{ 'feed.xml' | url }}">RSS</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>

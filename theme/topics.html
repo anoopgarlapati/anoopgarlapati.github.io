@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% import "partials/lists.html" as lists with context %}
+
+{% block body_class %}is-topics{% endblock %}
+
+{% block title %}{{ page.title }}<sup class="count">{{ pub.topics | length }}</sup>{% endblock %}
+
+{% block body %}
+<section aria-labelledby="all-topics">
+  <h2 class="visually-hidden" id="all-topics">All topics</h2>
+  <ul class="rows rows--ruled">
+    {% for t in pub.topics %}
+    {{ lists.row(lists.count(t.articles | length, "article"), t.title, t.url | url,
+                 sub=t.subtopics | selectattr("articles") | map(attribute="name") | join(" · "), desc=t.description) }}
+    {% endfor %}
+  </ul>
+</section>
+{% endblock %}

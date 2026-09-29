@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+{% import "partials/lists.html" as lists with context %}
+
+{% block body_class %}is-topic{% endblock %}
+
+{% block title %}{{ page.title }}<sup class="count">{{ topic.articles | length }}</sup>{% endblock %}
+
+{% block aside %}
+{% set subs = topic.subtopics | selectattr("articles") | list %}
+{% if subs %}
+{{ lists.label("Subtopics") }}
+<ul class="aside-links aside-links--tree">
+  {% for s in subs %}<li><a href="#{{ s.slug }}">{{ s.name }} <span>{{ s.articles | length }}</span></a></li>{% endfor %}
+</ul>
+{% endif %}
+{% endblock %}
+
+{% block body %}
+{{ lists.filterbar(topic.url) }}
+{% if page.content %}<div class="prose">{{ page.content }}</div>{% endif %}
+
+{% for s in topic.subtopics if s.articles %}
+<section class="section" aria-labelledby="{{ s.slug }}">
+  {{ lists.label(s.name, s.slug) }}
+  {{ lists.articles(s.articles) }}
+</section>
+{% endfor %}
+
+{% if topic.general %}
+<section class="section" aria-labelledby="more">
+  {{ lists.label("More in " ~ topic.title, "more") }}
+  {{ lists.articles(topic.general) }}
+</section>
+{% endif %}
+
+{% if topic.projects %}
+<section class="section" aria-labelledby="projects">
+  {{ lists.label("Related projects", "projects") }}
+  <ul class="rows">
+    {% for p in topic.projects %}{{ lists.row(p.category, p.title, p.url | url, desc=p.description) }}{% endfor %}
+  </ul>
+</section>
+{% endif %}
+{% endblock %}

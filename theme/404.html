@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% import "partials/lists.html" as lists with context %}
+
+{% block body_class %}is-404{% endblock %}
+
+{% block title %}Page not found{% endblock %}
+{% block lede %}<p class="lede">This page doesn't exist or has moved. Try <a href="{{ 'writing/' | url }}" data-search-open>searching</a>, or start from one of these.</p>{% endblock %}
+
+{% block body %}
+<h2 class="visually-hidden">Suggested pages</h2>
+<ul class="rows rows--ruled">
+  {{ lists.row("Home", config.site_author, base_url | trim('/') ~ '/') }}
+  {{ lists.row("Index", "All writing", 'writing/' | url) }}
+  {% if pub %}{% for t in pub.topics %}{{ lists.row("Topic", t.title, t.url | url) }}{% endfor %}{% endif %}
+</ul>
+{% endblock %}

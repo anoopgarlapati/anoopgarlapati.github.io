@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+{% import "partials/lists.html" as lists with context %}
+
+{% block body_class %}is-home{% endblock %}
+
+{% block head %}{% endblock %}
+
+{% block aside %}
+<h1 class="site-title">{{ config.site_author }}</h1>
+<p class="intro">{{ page.meta.lede }}</p>
+
+{{ lists.label("About") }}
+<div class="aside-text">{{ page.content }}</div>
+<p class="aside-more"><a href="{{ 'about/' | url }}">More about me →</a></p>
+
+{{ lists.label("Elsewhere") }}
+<ul class="aside-links">
+  {%- for s in config.extra.social %}
+  <li><a href="{{ s.url }}" rel="noopener" target="_blank">{{ s.name }}<span class="visually-hidden"> (opens in a new tab)</span></a></li>
+  {%- endfor %}
+  <li><a href="{{ 'feed.xml' | url }}">RSS</a></li>
+</ul>
+{% endblock %}
+
+{% block body %}
+<section aria-labelledby="writing">
+  <h2 class="visually-hidden" id="writing">Recent writing</h2>
+  {{ lists.filterbar('writing/') }}
+  {{ lists.articles(pub.articles[:10]) }}
+  {% if pub.articles | length > 10 %}<p class="more"><a href="{{ 'writing/' | url }}">All writing →</a></p>{% endif %}
+</section>
+
+{% if pub.projects %}
+<section class="section" aria-labelledby="projects">
+  {{ lists.label("Projects", "projects") }}
+  <ul class="rows">
+    {% for p in pub.projects %}{{ lists.row(p.category, p.title, p.url | url, desc=p.description) }}{% endfor %}
+  </ul>
+</section>
+{% endif %}
+{% endblock %}

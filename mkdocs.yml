@@ -1,18 +1,53 @@
 site_name: Anoop Garlapati
-site_url: https://anoopgarlapati.github.io
-site_description: Personal Blog
+site_url: https://anoopgarlapati.github.io/
+site_description: Notes on AI, distributed systems, backend engineering, architecture, and developer tooling.
 site_author: Anoop Garlapati
 
 theme:
   name: null
   custom_dir: theme
+  locale: en
+  # The built-in search plugin only emits search_index.json; theme/js/site.js provides the UI.
+  search_index_only: true
+  static_templates:
+    - 404.html
 
 docs_dir: docs
 site_dir: site
 
+hooks:
+  - hooks.py
+
+plugins:
+  - search
+
+# Global navigation (header). Articles live under posts/ and are reached
+# through topics, writing and search, so they are intentionally not listed.
 nav:
   - Home: index.md
+  - Writing: writing/index.md
+  - Topics:
+      - topics/index.md
+      - topics/backend.md
+      - topics/architecture.md
+      - topics/developer-tooling.md
+  - Projects:
+      - projects/index.md
+      - projects/testng-report-action.md
+      - projects/sbi-tt-rates-archive.md
   - About: about.md
+
+extra:
+  author:
+    name: Anoop Garlapati
+    bio: Software engineer working on large-scale, multi-tenant identity systems — OAuth 2.0/OIDC, SAML federation and SSO.
+  social:
+    - name: GitHub
+      url: https://github.com/anoopgarlapati
+    - name: LinkedIn
+      url: https://linkedin.com/in/anoopgarlapati
+    - name: X
+      url: https://x.com/anoopgarlapati
 
 markdown_extensions:
   - pymdownx.highlight:
@@ -27,7 +62,10 @@ markdown_extensions:
   - pymdownx.inlinehilite
   - pymdownx.snippets
   - toc:
-      permalink: false
+      # Articles use "#" for sections; the page title is the only <h1>.
+      baselevel: 2
+      permalink: "#"
+      permalink_title: Link to this section
   - admonition
   - tables
   - footnotes

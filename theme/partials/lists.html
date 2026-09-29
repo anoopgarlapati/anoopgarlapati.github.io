@@ -1,0 +1,43 @@
+{#- "/ LABEL" section marker with a hairline rule. -#}
+{% macro label(text, id=none) -%}
+<h2 class="section-label"{% if id %} id="{{ id }}"{% endif %}>{{ text }}</h2>
+{%- endmacro %}
+
+{#- One row: key (date/category/count) · title with a mono sub-line or description · meta. The whole row is clickable. -#}
+{% macro row(key, title, href, meta="", sub="", desc="", datetime=none) -%}
+<li class="row">
+  <span class="row-key">{% if datetime %}<time datetime="{{ datetime }}">{{ key }}</time>{% else %}{{ key }}{% endif %}</span>
+  <div class="row-body">
+    <h3 class="row-title"><a href="{{ href }}">{{ title }}</a></h3>
+    {%- if sub %}<p class="row-sub">{{ sub }}</p>{% endif %}
+    {%- if desc %}<p class="row-desc">{{ desc }}</p>{% endif %}
+  </div>
+  <span class="row-meta">{{ meta }}</span>
+</li>
+{%- endmacro %}
+
+{% macro topic_line(a) -%}
+{%- if a.topic %}{{ a.topic.title }}{% if a.subtopic %} · {{ a.subtopic.name }}{% endif %}{% endif -%}
+{%- endmacro %}
+
+{% macro articles(items) -%}
+<ul class="rows">
+  {%- for a in items %}
+  {{ row(a.date_display, a.title, a.url | url, a.reading_time ~ " min", sub=topic_line(a), datetime=a.date.isoformat() if a.date else none) }}
+  {%- endfor %}
+</ul>
+{%- endmacro %}
+
+{#- Topic tabs above article lists; `active` is the URL of the current filter. -#}
+{% macro filterbar(active) -%}
+<nav class="filterbar" aria-label="Filter by topic">
+  <ul>
+    <li><a href="{{ 'writing/' | url }}"{% if active == 'writing/' %} class="is-active"{% endif %}{% if page.url == 'writing/' %} aria-current="page"{% endif %}>All <span>{{ pub.articles | length }}</span></a></li>
+    {%- for t in pub.topics %}
+    <li><a href="{{ t.url | url }}"{% if active == t.url %} class="is-active"{% endif %}{% if page.url == t.url %} aria-current="page"{% endif %}>{{ t.title }} <span>{{ t.articles | length }}</span></a></li>
+    {%- endfor %}
+  </ul>
+</nav>
+{%- endmacro %}
+
+{% macro count(n, noun) %}{{ n }} {{ noun }}{{ '' if n == 1 else 's' }}{% endmacro %}

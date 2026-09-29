@@ -1,0 +1,68 @@
+{%- set is_home = page and page.is_homepage -%}
+{%- if page and page.title and not is_home -%}
+  {%- set seo_title = page.title ~ " · " ~ config.site_name -%}
+  {%- set og_title = page.title -%}
+{%- else -%}
+  {%- set seo_title = config.site_name ~ " — Engineering notes" -%}
+  {%- set og_title = config.site_name -%}
+{%- endif -%}
+{%- set seo_desc = (page.meta.description if page and page.meta and page.meta.description else config.site_description) -%}
+<title>{% if page and not page.title and not is_home %}Page not found · {{ config.site_name }}{% else %}{{ seo_title }}{% endif %}</title>
+<meta name="description" content="{{ seo_desc }}">
+<meta name="author" content="{{ config.site_author }}">
+{%- if page and page.canonical_url %}
+<link rel="canonical" href="{{ page.canonical_url }}">
+<meta property="og:url" content="{{ page.canonical_url }}">
+{%- endif %}
+<meta property="og:site_name" content="{{ config.site_name }}">
+<meta property="og:type" content="{{ 'article' if article else 'website' }}">
+<meta property="og:title" content="{{ og_title }}">
+<meta property="og:description" content="{{ seo_desc }}">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:creator" content="@anoopgarlapati">
+<meta name="twitter:title" content="{{ og_title }}">
+<meta name="twitter:description" content="{{ seo_desc }}">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0b0d12" media="(prefers-color-scheme: dark)">
+{%- if article %}
+{%- if article.date %}
+<meta property="article:published_time" content="{{ article.date.isoformat() }}">
+{%- endif %}
+{%- if article.updated %}
+<meta property="article:modified_time" content="{{ article.updated.isoformat() }}">
+{%- endif %}
+{%- for topic in article.topics %}
+<meta property="article:section" content="{{ topic.title }}">
+{%- endfor %}
+{%- for tag in article.tags %}
+<meta property="article:tag" content="{{ tag }}">
+{%- endfor %}
+<script type="application/ld+json">{{ {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": page.title,
+  "description": seo_desc,
+  "url": page.canonical_url,
+  "mainEntityOfPage": page.canonical_url,
+  "datePublished": article.date.isoformat() if article.date else none,
+  "dateModified": (article.updated or article.date).isoformat() if article.date else none,
+  "keywords": article.tags | join(", "),
+  "articleSection": article.topic.title if article.topic else none,
+  "author": {"@type": "Person", "name": config.site_author, "url": config.site_url}
+} | tojson }}</script>
+{%- elif is_home %}
+<script type="application/ld+json">{{ {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": config.site_name,
+  "url": config.site_url,
+  "description": config.site_description,
+  "author": {
+    "@type": "Person",
+    "name": config.site_author,
+    "url": config.site_url,
+    "sameAs": config.extra.social | map(attribute="url") | list
+  }
+} | tojson }}</script>
+{%- endif %}

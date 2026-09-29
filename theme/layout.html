@@ -1,0 +1,26 @@
+{#- Every region (header, page head, body, footer) shares one grid: a narrow context column and the main column. -#}
+{% extends "base.html" %}
+
+{% block content %}
+{%- set aside_html = self.aside() | trim %}
+<main id="main" tabindex="-1">
+  {% block head %}
+  <header class="page-head">
+    <div class="container grid">
+      <div class="grid-aside">{% include "partials/breadcrumbs.html" %}</div>
+      <div class="grid-main">
+        <h1 class="title">{% block title %}{{ page.title }}{% endblock %}</h1>
+        {% block lede %}{% if page.meta.description %}<p class="lede">{{ page.meta.description }}</p>{% endif %}{% endblock %}
+        {% block strip %}{% endblock %}
+      </div>
+    </div>
+  </header>
+  {% endblock %}
+  <div class="container grid split">
+    {% if aside_html %}<aside class="grid-aside" aria-label="Page details"><div class="sticky">{{ aside_html }}</div></aside>{% endif %}
+    <div class="grid-main">{% block body %}{% endblock %}</div>
+  </div>
+</main>
+{% endblock %}
+
+{% block aside %}{% endblock %}

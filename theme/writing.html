@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+{% import "partials/lists.html" as lists with context %}
+
+{% block body_class %}is-writing{% endblock %}
+
+{% block title %}{{ page.title }}<sup class="count">{{ pub.articles | length }}</sup>{% endblock %}
+
+{% block body %}
+<section aria-labelledby="all">
+  <h2 class="visually-hidden" id="all">All articles</h2>
+  {{ lists.filterbar('writing/') }}
+  {{ lists.articles(pub.articles) }}
+</section>
+{% endblock %}

@@ -1,6 +1,15 @@
 ---
 title: Spring AOP - Writing good pointcuts
+description: How I found that a poorly scoped pointcut expression was quietly adding 22% latency to a critical auth endpoint, and what I did to fix it.
 date: 2021-08-18
+categories:
+  - Spring
+  - Performance
+tags:
+  - Java
+  - Spring
+  - AspectJ
+  - Latency
 ---
 # Guide
 
@@ -11,6 +20,7 @@ On first encountering a pointcut declaration, AspectJ rewrites it into an optima
 Basically, pointcuts are rewritten in DNF (Disjunctive Normal Form) and the components of the pointcut are sorted such that those components that are cheaper to evaluate are checked first. This means you do not have to worry about understanding the performance of various pointcut designators and may supply them in any order in a pointcut declaration.
 
 However, AspectJ can work only with what it is told. For optimal performance of matching, you should think about what they are trying to achieve and narrow the search space for matches as much as possible in the definition. The existing designators naturally fall into one of three groups: kinded, scoping, and contextual:
+
 - Kinded designators select a particular kind of join point: `execution`, `get`, `set`, `call`, and `handler`
 - Scoping designators select a group of join points of interest (probably of many kinds): `within` and `withincode`
 - Contextual designators match (and optionally bind) based on context: `this`, `target`, and `@annotation`

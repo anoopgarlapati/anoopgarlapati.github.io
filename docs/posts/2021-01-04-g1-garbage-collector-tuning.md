@@ -1,6 +1,15 @@
 ---
 title: G1 Garbage collector tuning
+description: How I diagnosed frequent humongous allocations hammering CPU in our JVM and fixed it by tuning two G1 GC parameters.
 date: 2021-01-04
+categories:
+  - JVM
+  - Performance
+tags:
+  - Java
+  - JVM
+  - Garbage Collection
+  - G1
 ---
 
 # Problem

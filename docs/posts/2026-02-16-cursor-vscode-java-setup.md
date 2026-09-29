@@ -1,6 +1,15 @@
 ---
 title: Setting up Cursor and VS Code for Java projects
+description: Configuring Cursor and VS Code for Java development — the extension pack, user settings that actually matter, known Maven pitfalls, and how to run, debug, and measure test coverage.
 date: 2026-02-16
+categories:
+  - IDEs
+  - Testing & Debugging
+tags:
+  - Java
+  - Cursor
+  - VS Code
+  - Maven
 ---
 
 This covers configuring Cursor and VS Code for Java development — recommended settings, running and debugging tests, and viewing test results and coverage.

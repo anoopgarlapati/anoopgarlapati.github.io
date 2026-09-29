@@ -1,0 +1,27 @@
+{#- Letters in brackets are real single-key shortcuts (see site.js). -#}
+<header class="site-header">
+  <nav class="container grid header-grid" aria-label="Primary">
+    <a class="brand grid-aside" href="{{ base_url | trim('/') }}/"{% if page and page.is_homepage %} aria-current="page"{% endif %}>
+      <span class="mark" aria-hidden="true"></span>{{ config.site_name }}
+    </a>
+    <div class="grid-main header-main">
+      <ul class="nav-list">
+        {%- for item in nav if not (item.is_page and item.is_homepage) %}
+        {%- set href = item.url if item.is_page else item.children[0].url %}
+        {%- set key = item.title[0] | lower %}
+        {%- set active = item.active or (article and href == 'writing/') %}
+        <li><a class="nav-item{% if active %} is-active{% endif %}" href="{{ href | url }}" data-key="{{ key }}" aria-keyshortcuts="{{ key }}"
+          {%- if page and page.url == href %} aria-current="page"{% elif active %} aria-current="true"{% endif %}>
+          <span class="nav-key" aria-hidden="true">[{{ key | upper }}]</span>{{ item.title }}</a></li>
+        {%- endfor %}
+        <li><a class="nav-item" href="{{ config.extra.social[0].url }}" rel="noopener" target="_blank">GitHub<span aria-hidden="true"> ↗</span><span class="visually-hidden"> (opens in a new tab)</span></a></li>
+      </ul>
+      <div class="nav-list nav-list--end">
+        <a class="nav-item" href="{{ 'writing/' | url }}" data-search-open aria-keyshortcuts="/ Meta+K Control+K">
+          <span class="nav-key" aria-hidden="true">[/]</span>Search</a>
+        <button class="nav-item theme-toggle" type="button" data-theme-toggle data-key="m" aria-keyshortcuts="m" aria-label="Color theme: system. Switch to light">
+          <span class="nav-key" aria-hidden="true">[M]</span><span data-theme-label>Auto</span></button>
+      </div>
+    </div>
+  </nav>
+</header>

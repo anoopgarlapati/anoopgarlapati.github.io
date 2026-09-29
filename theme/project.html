@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+{% import "partials/toc.html" as toc %}
+
+{% block body_class %}is-project{% endblock %}
+
+{% block strip %}
+<dl class="strip">
+  <div><dt>Category</dt><dd>{{ project.category }}</dd></div>
+  {% if project.repo %}<div><dt>Source</dt><dd><a href="{{ project.repo }}" rel="noopener" target="_blank">{{ project.repo | replace("https://github.com/", "") }} ↗<span class="visually-hidden"> (opens in a new tab)</span></a></dd></div>{% endif %}
+  {% if project.topics %}<div><dt>Topics</dt><dd class="tags">{% for t in project.topics %}<a class="tag" href="{{ t.url | url }}">{{ t.title }}</a>{% endfor %}</dd></div>{% endif %}
+</dl>
+{% endblock %}
+
+{% block aside %}{{ toc.desktop(page.toc) }}{% endblock %}
+
+{% block body %}
+{{ toc.mobile(page.toc) }}
+<article class="prose">
+  {{ page.content }}
+</article>
+{% endblock %}

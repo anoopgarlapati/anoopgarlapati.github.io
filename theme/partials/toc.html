@@ -1,0 +1,31 @@
+{#- Items are either MkDocs TOC entries or dicts with title/url/children. -#}
+{% macro entries(items, depth=1) -%}
+<ul>
+  {%- for item in items %}
+  <li><a href="{{ item.url }}" data-toc-link>{{ item.title }}</a>
+    {%- if depth < 2 and item.children %}{{ entries(item.children, depth + 1) }}{% endif %}</li>
+  {%- endfor %}
+</ul>
+{%- endmacro %}
+
+{#- Desktop: a tree in the context column with a reading-progress bar. -#}
+{% macro desktop(items) -%}
+{%- set items = items | list -%}
+{%- if items %}
+<nav class="toc" aria-labelledby="toc-title">
+  <h2 class="section-label" id="toc-title">On this page</h2>
+  {{ entries(items) }}
+  <div class="progress" aria-hidden="true"><span class="progress-track"><span class="progress-fill" data-progress-fill></span></span><span data-progress-value>0%</span></div>
+</nav>
+{%- endif %}
+{%- endmacro %}
+
+{% macro mobile(items) -%}
+{%- set items = items | list -%}
+{%- if items %}
+<details class="toc-mobile">
+  <summary>On this page</summary>
+  <nav aria-label="On this page">{{ entries(items) }}</nav>
+</details>
+{%- endif %}
+{%- endmacro %}
