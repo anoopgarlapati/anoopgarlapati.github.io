@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en" data-base="../..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>
+    (function () {
+      var d = document.documentElement, t = null;
+      try { t = localStorage.getItem("theme"); } catch (e) {}
+      if (t === "light" || t === "dark") d.setAttribute("data-theme", t);
+      d.setAttribute("data-theme-pref", t === "light" || t === "dark" ? t : "system");
+      d.classList.add("js");
+    })();
+  </script>
+  <title>SBI TT Rates Archive · Anoop Garlapati</title>
+<meta name="description" content="An automatically updated archive of historical SBI telegraphic transfer (TT) rates since July 2020, with pre-parsed CSVs per currency pair.">
+<meta name="author" content="Anoop Garlapati">
+<link rel="canonical" href="https://anoopgarlapati.github.io/projects/sbi-tt-rates-archive/">
+<meta property="og:url" content="https://anoopgarlapati.github.io/projects/sbi-tt-rates-archive/">
+<meta property="og:site_name" content="Anoop Garlapati">
+<meta property="og:type" content="website">
+<meta property="og:title" content="SBI TT Rates Archive">
+<meta property="og:description" content="An automatically updated archive of historical SBI telegraphic transfer (TT) rates since July 2020, with pre-parsed CSVs per currency pair.">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:creator" content="@anoopgarlapati">
+<meta name="twitter:title" content="SBI TT Rates Archive">
+<meta name="twitter:description" content="An automatically updated archive of historical SBI telegraphic transfer (TT) rates since July 2020, with pre-parsed CSVs per currency pair.">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0b0d12" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="../../img/favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/rss+xml" title="Anoop Garlapati" href="../../feed.xml">
+  <link rel="stylesheet" href="../../css/site.css">
+  <script src="../../js/site.js" defer></script>
+</head>
+<body class="is-project">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+  <nav class="container grid header-grid" aria-label="Primary">
+    <a class="brand grid-aside" href="../../">
+      <span class="mark" aria-hidden="true"></span>Anoop Garlapati
+    </a>
+    <div class="grid-main header-main">
+      <ul class="nav-list">
+        <li><a class="nav-item" href="../../writing/" data-key="w" aria-keyshortcuts="w">
+          <span class="nav-key" aria-hidden="true">[W]</span>Writing</a></li>
+        <li><a class="nav-item" href="../../topics/" data-key="t" aria-keyshortcuts="t">
+          <span class="nav-key" aria-hidden="true">[T]</span>Topics</a></li>
+        <li><a class="nav-item is-active" href="../" data-key="p" aria-keyshortcuts="p" aria-current="true">
+          <span class="nav-key" aria-hidden="true">[P]</span>Projects</a></li>
+        <li><a class="nav-item" href="../../about/" data-key="a" aria-keyshortcuts="a">
+          <span class="nav-key" aria-hidden="true">[A]</span>About</a></li>
+        <li><a class="nav-item" href="https://github.com/anoopgarlapati" rel="noopener" target="_blank">GitHub<span aria-hidden="true"> ↗</span><span class="visually-hidden"> (opens in a new tab)</span></a></li>
+      </ul>
+      <div class="nav-list nav-list--end">
+        <a class="nav-item" href="../../writing/" data-search-open aria-keyshortcuts="/ Meta+K Control+K">
+          <span class="nav-key" aria-hidden="true">[/]</span>Search</a>
+        <button class="nav-item theme-toggle" type="button" data-theme-toggle data-key="m" aria-keyshortcuts="m" aria-label="Color theme: system. Switch to light">
+          <span class="nav-key" aria-hidden="true">[M]</span><span data-theme-label>Auto</span></button>
+      </div>
+    </div>
+  </nav>
+</header>
+  
+<main id="main" tabindex="-1">
+  
+  <header class="page-head">
+    <div class="container grid">
+      <div class="grid-aside">
+<nav class="crumbs" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="../">Projects</a></li>
+  </ol>
+</nav>
+</div>
+      <div class="grid-main">
+        <h1 class="title">SBI TT Rates Archive</h1>
+        <p class="lede">An automatically updated archive of historical SBI telegraphic transfer (TT) rates since July 2020, with pre-parsed CSVs per currency pair.</p>
+        
+<dl class="strip">
+  <div><dt>Category</dt><dd>Data & Automation</dd></div>
+  <div><dt>Source</dt><dd><a href="https://github.com/anoopgarlapati/sbi-tt-rates-archive" rel="noopener" target="_blank">anoopgarlapati/sbi-tt-rates-archive ↗<span class="visually-hidden"> (opens in a new tab)</span></a></dd></div>
+  
+</dl>
+
+      </div>
+    </div>
+  </header>
+  
+  <div class="container grid split">
+    <aside class="grid-aside" aria-label="Page details"><div class="sticky"><nav class="toc" aria-labelledby="toc-title">
+  <h2 class="section-label" id="toc-title">On this page</h2>
+  <ul>
+  <li><a href="#how-it-works" data-toc-link>How it works</a></li>
+  <li><a href="#scripts" data-toc-link>Scripts</a></li>
+</ul>
+  <div class="progress" aria-hidden="true"><span class="progress-track"><span class="progress-fill" data-progress-fill></span></span><span data-progress-value>0%</span></div>
+</nav></div></aside>
+    <div class="grid-main">
+
+<details class="toc-mobile">
+  <summary>On this page</summary>
+  <nav aria-label="On this page"><ul>
+  <li><a href="#how-it-works" data-toc-link>How it works</a></li>
+  <li><a href="#scripts" data-toc-link>Scripts</a></li>
+</ul></nav>
+</details>
+<article class="prose">
+  <p>SBI TT rates are the reference exchange rates needed for Indian income tax returns, but neither RBI nor SBI publishes a historical archive. This repository keeps one.</p>
+<h2 id="how-it-works">How it works<a class="headerlink" href="#how-it-works" title="Link to this section">#</a></h2>
+<p>A scheduled GitHub Action runs twice a day. It downloads the latest SBI TT rates PDF and commits it, then parses the PDF and updates the derived CSVs in a second commit, so the raw source and the structured data never drift apart.</p>
+<p>PDFs are stored by year and month, named by retrieval timestamp:</p>
+<div class="language-text highlight"><pre><span></span><code>2021/
+  01/
+    2021-01-01-00:00.pdf
+</code></pre></div>
+<p>Parsed rates live in <code>rates/</code>, one CSV per currency pair (<code>USD-INR.csv</code>, <code>EUR-INR.csv</code>, …) plus a <code>_metadata.csv</code> audit trail with one row per processed PDF.</p>
+<h2 id="scripts">Scripts<a class="headerlink" href="#scripts" title="Link to this section">#</a></h2>
+<div class="language-bash highlight"><pre><span></span><code><span class="c1"># Parse all historical PDFs and generate initial CSVs</span>
+uv<span class="w"> </span>run<span class="w"> </span>python<span class="w"> </span>scripts/backfill.py
+
+<span class="c1"># Parse a single PDF and append to CSVs</span>
+uv<span class="w"> </span>run<span class="w"> </span>python<span class="w"> </span>scripts/daily_update.py<span class="w"> </span><span class="m">2026</span>/06/2026-06-20-14:00.pdf
+
+<span class="c1"># Validate CSV integrity</span>
+uv<span class="w"> </span>run<span class="w"> </span>python<span class="w"> </span>scripts/validate.py
+</code></pre></div>
+<p>The archive is forked from <a href="https://github.com/skbly7/sbi-tt-rates-historical">skbly7/sbi-tt-rates-historical</a>. Data is collected automatically; no guarantee is made about completeness or correctness.</p>
+</article>
+</div>
+  </div>
+</main>
+
+  <footer class="site-footer">
+  <div class="container grid footer-grid">
+    <div class="grid-aside">
+      <p class="brand"><span class="mark" aria-hidden="true"></span>Anoop Garlapati</p>
+      <p class="footer-note">&copy; 2026 Anoop Garlapati</p>
+    </div>
+    <div class="grid-main footer-cols">
+      <nav aria-labelledby="f-site"><p class="footer-label" id="f-site">Site</p>
+        <ul>
+          <li><a href="../../writing/">Writing</a></li>
+          <li><a href="../../topics/">Topics</a></li>
+          <li><a href="../">Projects</a></li>
+          <li><a href="../../about/">About</a></li>
+        </ul>
+      </nav>
+      
+      <nav aria-labelledby="f-topics"><p class="footer-label" id="f-topics">Topics</p>
+        <ul><li><a href="../../topics/backend/">Backend</a></li><li><a href="../../topics/architecture/">Architecture</a></li><li><a href="../../topics/developer-tooling/">Developer Tooling</a></li></ul>
+      </nav>
+      
+      <div><p class="footer-label">Elsewhere</p>
+        <ul>
+          <li><a href="https://github.com/anoopgarlapati" rel="noopener" target="_blank">GitHub<span class="visually-hidden"> (opens in a new tab)</span></a></li>
+          <li><a href="https://linkedin.com/in/anoopgarlapati" rel="noopener" target="_blank">LinkedIn<span class="visually-hidden"> (opens in a new tab)</span></a></li>
+          <li><a href="https://x.com/anoopgarlapati" rel="noopener" target="_blank">X<span class="visually-hidden"> (opens in a new tab)</span></a></li>
+          <li><a href="../../feed.xml">RSS</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+  
+<dialog id="search" class="search-dialog" aria-label="Search the site">
+  <div class="search-box">
+    <svg class="icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+    <input id="search-input" class="search-input" type="search" role="combobox"
+           aria-label="Search" aria-expanded="false" aria-controls="search-results" aria-autocomplete="list"
+           placeholder="Search writing, topics and projects" autocomplete="off" spellcheck="false">
+    <button class="search-esc" type="button" data-search-close aria-label="Close search"><kbd>Esc</kbd></button>
+  </div>
+  <div id="search-results" class="search-results" role="listbox" aria-label="Results"></div>
+  <p id="search-status" class="visually-hidden" aria-live="polite"></p>
+  <div class="search-foot" aria-hidden="true">
+    <span><kbd>↑</kbd><kbd>↓</kbd> navigate</span>
+    <span><kbd>↵</kbd> open</span>
+    <span><kbd>esc</kbd> close</span>
+  </div>
+</dialog>
+</body>
+</html>

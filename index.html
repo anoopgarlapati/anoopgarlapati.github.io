@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en" data-base=".">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>
+    (function () {
+      var d = document.documentElement, t = null;
+      try { t = localStorage.getItem("theme"); } catch (e) {}
+      if (t === "light" || t === "dark") d.setAttribute("data-theme", t);
+      d.setAttribute("data-theme-pref", t === "light" || t === "dark" ? t : "system");
+      d.classList.add("js");
+    })();
+  </script>
+  <title>Anoop Garlapati — Engineering notes</title>
+<meta name="description" content="Notes on AI, distributed systems, backend engineering, architecture, and developer tooling by Anoop Garlapati.">
+<meta name="author" content="Anoop Garlapati">
+<link rel="canonical" href="https://anoopgarlapati.github.io/">
+<meta property="og:url" content="https://anoopgarlapati.github.io/">
+<meta property="og:site_name" content="Anoop Garlapati">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Anoop Garlapati">
+<meta property="og:description" content="Notes on AI, distributed systems, backend engineering, architecture, and developer tooling by Anoop Garlapati.">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:creator" content="@anoopgarlapati">
+<meta name="twitter:title" content="Anoop Garlapati">
+<meta name="twitter:description" content="Notes on AI, distributed systems, backend engineering, architecture, and developer tooling by Anoop Garlapati.">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0b0d12" media="(prefers-color-scheme: dark)">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "author": {"@type": "Person", "name": "Anoop Garlapati", "sameAs": ["https://github.com/anoopgarlapati", "https://linkedin.com/in/anoopgarlapati", "https://x.com/anoopgarlapati"], "url": "https://anoopgarlapati.github.io/"}, "description": "Notes on AI, distributed systems, backend engineering, architecture, and developer tooling.", "name": "Anoop Garlapati", "url": "https://anoopgarlapati.github.io/"}</script>
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/rss+xml" title="Anoop Garlapati" href="feed.xml">
+  <link rel="stylesheet" href="css/site.css">
+  <script src="js/site.js" defer></script>
+</head>
+<body class="is-home">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+  <nav class="container grid header-grid" aria-label="Primary">
+    <a class="brand grid-aside" href="./" aria-current="page">
+      <span class="mark" aria-hidden="true"></span>Anoop Garlapati
+    </a>
+    <div class="grid-main header-main">
+      <ul class="nav-list">
+        <li><a class="nav-item" href="writing/" data-key="w" aria-keyshortcuts="w">
+          <span class="nav-key" aria-hidden="true">[W]</span>Writing</a></li>
+        <li><a class="nav-item" href="topics/" data-key="t" aria-keyshortcuts="t">
+          <span class="nav-key" aria-hidden="true">[T]</span>Topics</a></li>
+        <li><a class="nav-item" href="projects/" data-key="p" aria-keyshortcuts="p">
+          <span class="nav-key" aria-hidden="true">[P]</span>Projects</a></li>
+        <li><a class="nav-item" href="about/" data-key="a" aria-keyshortcuts="a">
+          <span class="nav-key" aria-hidden="true">[A]</span>About</a></li>
+        <li><a class="nav-item" href="https://github.com/anoopgarlapati" rel="noopener" target="_blank">GitHub<span aria-hidden="true"> ↗</span><span class="visually-hidden"> (opens in a new tab)</span></a></li>
+      </ul>
+      <div class="nav-list nav-list--end">
+        <a class="nav-item" href="writing/" data-search-open aria-keyshortcuts="/ Meta+K Control+K">
+          <span class="nav-key" aria-hidden="true">[/]</span>Search</a>
+        <button class="nav-item theme-toggle" type="button" data-theme-toggle data-key="m" aria-keyshortcuts="m" aria-label="Color theme: system. Switch to light">
+          <span class="nav-key" aria-hidden="true">[M]</span><span data-theme-label>Auto</span></button>
+      </div>
+    </div>
+  </nav>
+</header>
+  
+<main id="main" tabindex="-1">
+  
+  <div class="container grid split">
+    <aside class="grid-aside" aria-label="Page details"><div class="sticky"><h1 class="site-title">Anoop Garlapati</h1>
+<p class="intro">Notes on AI, distributed systems, backend engineering and architecture — things I build, debug, learn and rethink.</p>
+
+<h2 class="section-label">About</h2>
+<div class="aside-text"><p>I work on large-scale distributed systems in the IAM space — OAuth 2.0/OIDC token services, SAML federation, SSO and the problems that come with running multi-tenant identity at enterprise scale.</p></div>
+<p class="aside-more"><a href="about/">More about me →</a></p>
+
+<h2 class="section-label">Elsewhere</h2>
+<ul class="aside-links">
+  <li><a href="https://github.com/anoopgarlapati" rel="noopener" target="_blank">GitHub<span class="visually-hidden"> (opens in a new tab)</span></a></li>
+  <li><a href="https://linkedin.com/in/anoopgarlapati" rel="noopener" target="_blank">LinkedIn<span class="visually-hidden"> (opens in a new tab)</span></a></li>
+  <li><a href="https://x.com/anoopgarlapati" rel="noopener" target="_blank">X<span class="visually-hidden"> (opens in a new tab)</span></a></li>
+  <li><a href="feed.xml">RSS</a></li>
+</ul></div></aside>
+    <div class="grid-main">
+<section aria-labelledby="writing">
+  <h2 class="visually-hidden" id="writing">Recent writing</h2>
+  <nav class="filterbar" aria-label="Filter by topic">
+  <ul>
+    <li><a href="writing/" class="is-active">All <span>3</span></a></li>
+    <li><a href="topics/backend/">Backend <span>2</span></a></li>
+    <li><a href="topics/architecture/">Architecture <span>2</span></a></li>
+    <li><a href="topics/developer-tooling/">Developer Tooling <span>1</span></a></li>
+  </ul>
+</nav>
+  <ul class="rows">
+  <li class="row">
+  <span class="row-key"><time datetime="2026-02-16">2026-02-16</time></span>
+  <div class="row-body">
+    <h3 class="row-title"><a href="posts/2026-02-16-cursor-vscode-java-setup/">Setting up Cursor and VS Code for Java projects</a></h3><p class="row-sub">Developer Tooling · IDEs</p>
+  </div>
+  <span class="row-meta">5 min</span>
+</li>
+  <li class="row">
+  <span class="row-key"><time datetime="2021-08-18">2021-08-18</time></span>
+  <div class="row-body">
+    <h3 class="row-title"><a href="posts/2021-08-18-spring-aop-writing-good-pointcuts/">Spring AOP - Writing good pointcuts</a></h3><p class="row-sub">Backend · Spring</p>
+  </div>
+  <span class="row-meta">4 min</span>
+</li>
+  <li class="row">
+  <span class="row-key"><time datetime="2021-01-04">2021-01-04</time></span>
+  <div class="row-body">
+    <h3 class="row-title"><a href="posts/2021-01-04-g1-garbage-collector-tuning/">G1 Garbage collector tuning</a></h3><p class="row-sub">Backend · JVM</p>
+  </div>
+  <span class="row-meta">3 min</span>
+</li>
+</ul>
+  
+</section>
+
+
+<section class="section" aria-labelledby="projects">
+  <h2 class="section-label" id="projects">Projects</h2>
+  <ul class="rows">
+    <li class="row">
+  <span class="row-key">Developer Tools</span>
+  <div class="row-body">
+    <h3 class="row-title"><a href="projects/testng-report-action/">TestNG Report Action</a></h3><p class="row-desc">A GitHub Action that parses TestNG XML results, writes Markdown test reports to the workflow summary and annotates failed tests in pull requests.</p>
+  </div>
+  <span class="row-meta"></span>
+</li><li class="row">
+  <span class="row-key">Data & Automation</span>
+  <div class="row-body">
+    <h3 class="row-title"><a href="projects/sbi-tt-rates-archive/">SBI TT Rates Archive</a></h3><p class="row-desc">An automatically updated archive of historical SBI telegraphic transfer (TT) rates since July 2020, with pre-parsed CSVs per currency pair.</p>
+  </div>
+  <span class="row-meta"></span>
+</li>
+  </ul>
+</section>
+
+</div>
+  </div>
+</main>
+
+  <footer class="site-footer">
+  <div class="container grid footer-grid">
+    <div class="grid-aside">
+      <p class="brand"><span class="mark" aria-hidden="true"></span>Anoop Garlapati</p>
+      <p class="footer-note">&copy; 2026 Anoop Garlapati</p>
+    </div>
+    <div class="grid-main footer-cols">
+      <nav aria-labelledby="f-site"><p class="footer-label" id="f-site">Site</p>
+        <ul>
+          <li><a href="writing/">Writing</a></li>
+          <li><a href="topics/">Topics</a></li>
+          <li><a href="projects/">Projects</a></li>
+          <li><a href="about/">About</a></li>
+        </ul>
+      </nav>
+      
+      <nav aria-labelledby="f-topics"><p class="footer-label" id="f-topics">Topics</p>
+        <ul><li><a href="topics/backend/">Backend</a></li><li><a href="topics/architecture/">Architecture</a></li><li><a href="topics/developer-tooling/">Developer Tooling</a></li></ul>
+      </nav>
+      
+      <div><p class="footer-label">Elsewhere</p>
+        <ul>
+          <li><a href="https://github.com/anoopgarlapati" rel="noopener" target="_blank">GitHub<span class="visually-hidden"> (opens in a new tab)</span></a></li>
+          <li><a href="https://linkedin.com/in/anoopgarlapati" rel="noopener" target="_blank">LinkedIn<span class="visually-hidden"> (opens in a new tab)</span></a></li>
+          <li><a href="https://x.com/anoopgarlapati" rel="noopener" target="_blank">X<span class="visually-hidden"> (opens in a new tab)</span></a></li>
+          <li><a href="feed.xml">RSS</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+  
+<dialog id="search" class="search-dialog" aria-label="Search the site">
+  <div class="search-box">
+    <svg class="icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+    <input id="search-input" class="search-input" type="search" role="combobox"
+           aria-label="Search" aria-expanded="false" aria-controls="search-results" aria-autocomplete="list"
+           placeholder="Search writing, topics and projects" autocomplete="off" spellcheck="false">
+    <button class="search-esc" type="button" data-search-close aria-label="Close search"><kbd>Esc</kbd></button>
+  </div>
+  <div id="search-results" class="search-results" role="listbox" aria-label="Results"></div>
+  <p id="search-status" class="visually-hidden" aria-live="polite"></p>
+  <div class="search-foot" aria-hidden="true">
+    <span><kbd>↑</kbd><kbd>↓</kbd> navigate</span>
+    <span><kbd>↵</kbd> open</span>
+    <span><kbd>esc</kbd> close</span>
+  </div>
+</dialog>
+</body>
+</html>

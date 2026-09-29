@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en" data-base="..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>
+    (function () {
+      var d = document.documentElement, t = null;
+      try { t = localStorage.getItem("theme"); } catch (e) {}
+      if (t === "light" || t === "dark") d.setAttribute("data-theme", t);
+      d.setAttribute("data-theme-pref", t === "light" || t === "dark" ? t : "system");
+      d.classList.add("js");
+    })();
+  </script>
+  <title>Topics · Anoop Garlapati</title>
+<meta name="description" content="Engineering notes organised by area — backend systems, architecture and developer tooling.">
+<meta name="author" content="Anoop Garlapati">
+<link rel="canonical" href="https://anoopgarlapati.github.io/topics/">
+<meta property="og:url" content="https://anoopgarlapati.github.io/topics/">
+<meta property="og:site_name" content="Anoop Garlapati">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Topics">
+<meta property="og:description" content="Engineering notes organised by area — backend systems, architecture and developer tooling.">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:creator" content="@anoopgarlapati">
+<meta name="twitter:title" content="Topics">
+<meta name="twitter:description" content="Engineering notes organised by area — backend systems, architecture and developer tooling.">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0b0d12" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="../img/favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/rss+xml" title="Anoop Garlapati" href="../feed.xml">
+  <link rel="stylesheet" href="../css/site.css">
+  <script src="../js/site.js" defer></script>
+</head>
+<body class="is-topics">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+  <nav class="container grid header-grid" aria-label="Primary">
+    <a class="brand grid-aside" href="../">
+      <span class="mark" aria-hidden="true"></span>Anoop Garlapati
+    </a>
+    <div class="grid-main header-main">
+      <ul class="nav-list">
+        <li><a class="nav-item" href="../writing/" data-key="w" aria-keyshortcuts="w">
+          <span class="nav-key" aria-hidden="true">[W]</span>Writing</a></li>
+        <li><a class="nav-item is-active" href="./" data-key="t" aria-keyshortcuts="t" aria-current="page">
+          <span class="nav-key" aria-hidden="true">[T]</span>Topics</a></li>
+        <li><a class="nav-item" href="../projects/" data-key="p" aria-keyshortcuts="p">
+          <span class="nav-key" aria-hidden="true">[P]</span>Projects</a></li>
+        <li><a class="nav-item" href="../about/" data-key="a" aria-keyshortcuts="a">
+          <span class="nav-key" aria-hidden="true">[A]</span>About</a></li>
+        <li><a class="nav-item" href="https://github.com/anoopgarlapati" rel="noopener" target="_blank">GitHub<span aria-hidden="true"> ↗</span><span class="visually-hidden"> (opens in a new tab)</span></a></li>
+      </ul>
+      <div class="nav-list nav-list--end">
+        <a class="nav-item" href="../writing/" data-search-open aria-keyshortcuts="/ Meta+K Control+K">
+          <span class="nav-key" aria-hidden="true">[/]</span>Search</a>
+        <button class="nav-item theme-toggle" type="button" data-theme-toggle data-key="m" aria-keyshortcuts="m" aria-label="Color theme: system. Switch to light">
+          <span class="nav-key" aria-hidden="true">[M]</span><span data-theme-label>Auto</span></button>
+      </div>
+    </div>
+  </nav>
+</header>
+  
+<main id="main" tabindex="-1">
+  
+  <header class="page-head">
+    <div class="container grid">
+      <div class="grid-aside"></div>
+      <div class="grid-main">
+        <h1 class="title">Topics<sup class="count">3</sup></h1>
+        <p class="lede">Engineering notes organised by area — backend systems, architecture and developer tooling.</p>
+        
+      </div>
+    </div>
+  </header>
+  
+  <div class="container grid split">
+    
+    <div class="grid-main">
+<section aria-labelledby="all-topics">
+  <h2 class="visually-hidden" id="all-topics">All topics</h2>
+  <ul class="rows rows--ruled">
+    
+    <li class="row">
+  <span class="row-key">2 articles</span>
+  <div class="row-body">
+    <h3 class="row-title"><a href="backend/">Backend</a></h3><p class="row-sub">JVM · Spring</p><p class="row-desc">Java, Spring and the JVM — how production services actually behave, and what it takes to keep them fast.</p>
+  </div>
+  <span class="row-meta"></span>
+</li>
+    
+    <li class="row">
+  <span class="row-key">2 articles</span>
+  <div class="row-body">
+    <h3 class="row-title"><a href="architecture/">Architecture</a></h3><p class="row-sub">Performance</p><p class="row-desc">System-level trade-offs, performance investigations and the decisions behind them.</p>
+  </div>
+  <span class="row-meta"></span>
+</li>
+    
+    <li class="row">
+  <span class="row-key">1 article</span>
+  <div class="row-body">
+    <h3 class="row-title"><a href="developer-tooling/">Developer Tooling</a></h3><p class="row-sub">IDEs · Testing & Debugging</p><p class="row-desc">Editors, build tools and CI — the setup that makes day-to-day engineering faster.</p>
+  </div>
+  <span class="row-meta"></span>
+</li>
+    
+  </ul>
+</section>
+</div>
+  </div>
+</main>
+
+  <footer class="site-footer">
+  <div class="container grid footer-grid">
+    <div class="grid-aside">
+      <p class="brand"><span class="mark" aria-hidden="true"></span>Anoop Garlapati</p>
+      <p class="footer-note">&copy; 2026 Anoop Garlapati</p>
+    </div>
+    <div class="grid-main footer-cols">
+      <nav aria-labelledby="f-site"><p class="footer-label" id="f-site">Site</p>
+        <ul>
+          <li><a href="../writing/">Writing</a></li>
+          <li><a href="./">Topics</a></li>
+          <li><a href="../projects/">Projects</a></li>
+          <li><a href="../about/">About</a></li>
+        </ul>
+      </nav>
+      
+      <nav aria-labelledby="f-topics"><p class="footer-label" id="f-topics">Topics</p>
+        <ul><li><a href="backend/">Backend</a></li><li><a href="architecture/">Architecture</a></li><li><a href="developer-tooling/">Developer Tooling</a></li></ul>
+      </nav>
+      
+      <div><p class="footer-label">Elsewhere</p>
+        <ul>
+          <li><a href="https://github.com/anoopgarlapati" rel="noopener" target="_blank">GitHub<span class="visually-hidden"> (opens in a new tab)</span></a></li>
+          <li><a href="https://linkedin.com/in/anoopgarlapati" rel="noopener" target="_blank">LinkedIn<span class="visually-hidden"> (opens in a new tab)</span></a></li>
+          <li><a href="https://x.com/anoopgarlapati" rel="noopener" target="_blank">X<span class="visually-hidden"> (opens in a new tab)</span></a></li>
+          <li><a href="../feed.xml">RSS</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+  
+<dialog id="search" class="search-dialog" aria-label="Search the site">
+  <div class="search-box">
+    <svg class="icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+    <input id="search-input" class="search-input" type="search" role="combobox"
+           aria-label="Search" aria-expanded="false" aria-controls="search-results" aria-autocomplete="list"
+           placeholder="Search writing, topics and projects" autocomplete="off" spellcheck="false">
+    <button class="search-esc" type="button" data-search-close aria-label="Close search"><kbd>Esc</kbd></button>
+  </div>
+  <div id="search-results" class="search-results" role="listbox" aria-label="Results"></div>
+  <p id="search-status" class="visually-hidden" aria-live="polite"></p>
+  <div class="search-foot" aria-hidden="true">
+    <span><kbd>↑</kbd><kbd>↓</kbd> navigate</span>
+    <span><kbd>↵</kbd> open</span>
+    <span><kbd>esc</kbd> close</span>
+  </div>
+</dialog>
+</body>
+</html>
