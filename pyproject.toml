@@ -6,4 +6,5 @@ dependencies = [
   "mkdocs>=1.6",
   "pymdown-extensions>=10.0",
   "pygments>=2.17",
+  "pillow>=13.0.0",
 ]

@@ -19,7 +19,19 @@
 <meta property="og:title" content="{{ og_title }}">
 <meta property="og:description" content="{{ seo_desc }}">
 <meta property="og:locale" content="en_US">
+{%- set og_image = article.image_url if article and article.image_url else none %}
+{%- if og_image %}
+<meta property="og:image" content="{{ og_image }}">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="{{ og_title }}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="{{ og_image }}">
+<meta name="twitter:image:alt" content="{{ og_title }}">
+{%- else %}
 <meta name="twitter:card" content="summary">
+{%- endif %}
 <meta name="twitter:creator" content="@anoopgarlapati">
 <meta name="twitter:title" content="{{ og_title }}">
 <meta name="twitter:description" content="{{ seo_desc }}">
@@ -43,6 +55,7 @@
   "@type": "BlogPosting",
   "headline": page.title,
   "description": seo_desc,
+  "image": og_image,
   "url": page.canonical_url,
   "mainEntityOfPage": page.canonical_url,
   "datePublished": article.date.isoformat() if article.date else none,

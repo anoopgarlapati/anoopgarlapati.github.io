@@ -26,7 +26,7 @@ tags: [Redis, Sentinel, Lettuce]
 ---
 ```
 
-Use `#` for sections (they render as `<h2>`; the title is the only `<h1>`). Reading time, listings, related articles, prev/next, breadcrumbs, RSS and search are derived by `hooks.py`. An unknown category fails the strict build.
+Use `#` for sections (they render as `<h2>`; the title is the only `<h1>`). Reading time, listings, related articles, prev/next, breadcrumbs, social preview cards (`og/<slug>.png`), RSS and search are derived by `hooks.py`. An unknown category fails the strict build.
 
 **Topic** — add `docs/topics/<slug>.md` with `template: topic.html`, a `description` and `subtopics:` (list of names), then add it under `Topics` in `mkdocs.yml` `nav`.
 
