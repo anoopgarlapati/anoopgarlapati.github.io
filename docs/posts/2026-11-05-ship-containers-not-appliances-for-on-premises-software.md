@@ -2,6 +2,7 @@
 title: Why we should ship containers for on-premises software and not the appliances
 description: Operating system vendors take roughly a week to a month to ship a patch, while attackers can move in a day. Containers leave the OS and the host to the customer.
 date: 2026-11-05
+updated: 2026-11-06
 categories:
   - Architecture
 tags:
@@ -32,6 +33,12 @@ AI tools now find and report flaws faster than before. That changes how we have 
 Appliances ship with an operating system, such as AlmaLinux. That means we have to track and patch the OS too. Based on recent trends, a high or critical OS CVE shows up roughly once a week.
 
 Some of these CVEs reach the CISA Known Exploited Vulnerability (KEV) list within a day. Some exploits even appear within an hour. AI agents make this faster, because they can turn a CVE description into a working attack.
+
+Recent [a16z research](https://www.a16z.news/p/the-exploit-was-the-bottleneck) tracks this shift across the industry. For example, an unreleased Anthropic model exploited the Linux kernel multipath TCP flaw (`CVE-2026-98432` in the table above) in under an hour, while Ubuntu and Red Hat still had no fixed package more than three weeks after the upstream fix. 
+
+Over the same period, the 2026 Verizon Data Breach Investigations Report puts the median time to fix a known-exploited vulnerability at 43 days. 
+
+As Amazon Chief Information Security Officer (CISO) CJ Moses wrote, AI "makes it cheaper to turn a patch diff or advisory into a working exploit" and "a 7-day or 30-day SLA assumes a delay that no longer exists."
 
 The OS vendor takes roughly a week or a month to ship a patch. Attackers can move in a day or less. That gap is the real problem in this agentic era.
 
